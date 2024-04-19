@@ -12,8 +12,12 @@ class LUMINUSGAME_API AMainCharacter : public ACharacter
 	GENERATED_BODY()
 
 private:
-
-
+	/*
+	// 차사 능력치
+	UPROPERTY()
+	int Health;
+	int Mana;
+	*/
 protected:
 	virtual void BeginPlay() override;
 
