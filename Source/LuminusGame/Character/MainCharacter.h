@@ -15,8 +15,8 @@ private:
 	/*
 	// 차사 능력치
 	UPROPERTY()
-	int Health;
-	int Mana;
+	int health;
+	int mana;
 	*/
 protected:
 	virtual void BeginPlay() override;
