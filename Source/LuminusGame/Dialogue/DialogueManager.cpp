@@ -12,3 +12,8 @@ DialogueManager::~DialogueManager()
 {
 
 }
+
+void DialogueManager::ReadCSVFile(const FString& FilePath)
+{
+
+}
