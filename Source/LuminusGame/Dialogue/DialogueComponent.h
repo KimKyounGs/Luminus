@@ -14,6 +14,9 @@ class LUMINUSGAME_API UDialogueComponent : public UActorComponent
 
 private:	
 	FString EXString;
+	
+	UPROPERTY(EditAnywhere, Category = Ex)
+	int ExNum;
 
 protected:
 	virtual void BeginPlay() override;
