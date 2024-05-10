@@ -11,6 +11,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 #include "Dialogue/DialogueComponent.h"
+#include "GlobalStruct.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -57,9 +58,6 @@ ALuminusGameCharacter::ALuminusGameCharacter()
 	DialogueComponent = CreateDefaultSubobject<UDialogueComponent>(TEXT("DialgoueComponent"));
 }
 
-
-	DialogueComponent = CreateDefaultSubobject<UDialogueComponent>(TEXT("DialogueComponent"));
-}
 void ALuminusGameCharacter::BeginPlay()
 {
 	// Call the base class  

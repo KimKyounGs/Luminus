@@ -4,9 +4,24 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
+#include "Engine/DataTable.h"
 #include "DialogueInstance.generated.h"
 
-class UDataTable;
+USTRUCT()
+struct FDialogueData :public FTableRowBase
+{
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(EditAnywhere)
+	int ID;
+
+	UPROPERTY(EditAnywhere)
+	FName Name;
+
+	UPROPERTY(EditAnywhere)
+	FText Context;
+
+};
 
 UCLASS()
 class LUMINUSGAME_API UDialogueInstance : public UGameInstance
@@ -16,8 +31,9 @@ class LUMINUSGAME_API UDialogueInstance : public UGameInstance
 private:
 	UPROPERTY()
 	UDataTable* DialogueTable;
-
+	TMap<int, FDialogueData> DialogueDataMap;
 public:
 	UDialogueInstance();
-
+	void ParsingDataTable();
+	FDialogueData GetDialogueData();
 };
