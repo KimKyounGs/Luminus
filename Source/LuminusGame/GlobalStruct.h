@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 
-
 class LUMINUSGAME_API GlobalStruct
 {
 public:

@@ -7,7 +7,7 @@
 #include "Engine/DataTable.h"
 #include "DialogueInstance.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FDialogueData :public FTableRowBase
 {
 	GENERATED_USTRUCT_BODY()
@@ -30,10 +30,9 @@ class LUMINUSGAME_API UDialogueInstance : public UGameInstance
 	
 private:
 	UPROPERTY()
-	UDataTable* DialogueTable;
-	TMap<int, FDialogueData> DialogueDataMap;
+	UDataTable* DialogueTable; // 다이얼로그 테이블
+	TMap<int, FDialogueData> DialogueDataMap; // Map에 다이얼로그 데이터 저장. 
 public:
-	UDialogueInstance();
-	void ParsingDataTable();
-	FDialogueData GetDialogueData();
+	UDialogueInstance(); // 생성자
+	void ParsingDataTable(); // 데이터 파싱
 };

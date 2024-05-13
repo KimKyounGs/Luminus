@@ -25,8 +25,17 @@ UDialogueInstance::UDialogueInstance()
 
 void UDialogueInstance::ParsingDataTable()
 {
-    if (DialogueTable == NULL) return;
-
-    TArray<FDialogueData*> arr;
+    if (DialogueTable == NULL) {
+        UE_LOG(LogTemp, Error, TEXT("NULL DialogueTable"));
+        return;
+    }
+    //FDataTableRowHandle RowHandle;
+    //RowHandle.RowName = FName("MyRowName");
+    //if (const FDialogueData* MyRow = DialogueTable->FindRow<FDialogueData>(RowHandle.RowName, FString("")))
+    //{
+    //    // Row에 접근할 수 있습니다.
+    //    FName RowName = MyRow->Name;
+    //    FText RowValue = MyRow->Context;
+    //}
 
 }
