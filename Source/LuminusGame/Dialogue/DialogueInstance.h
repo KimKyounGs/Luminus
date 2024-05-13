@@ -7,7 +7,7 @@
 #include "Engine/DataTable.h"
 #include "DialogueInstance.generated.h"
 
-USTRUCT(BlueprintType)
+USTRUCT()
 struct FDialogueData :public FTableRowBase
 {
 	GENERATED_USTRUCT_BODY()

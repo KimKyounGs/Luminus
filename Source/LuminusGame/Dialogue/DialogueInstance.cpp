@@ -20,7 +20,7 @@ UDialogueInstance::UDialogueInstance()
         UE_LOG(LogTemp, Error, TEXT("Failed to load data table: %s"), *DialogueDataPath);
     }
 
-    ParsingDataTable();
+    // ParsingDataTable();
 }
 
 void UDialogueInstance::ParsingDataTable()

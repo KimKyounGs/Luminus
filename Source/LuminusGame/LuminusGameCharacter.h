@@ -46,9 +46,6 @@ class ALuminusGameCharacter : public ACharacter
 	UInputAction* LookAction;
 
 
-	UPROPERTY(EditAnywhere, Category = Dialogue)
-	UDialogueComponent* DialogueComponent;
-
 public:
 	ALuminusGameCharacter();
 	

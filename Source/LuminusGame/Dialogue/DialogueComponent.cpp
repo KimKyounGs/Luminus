@@ -27,9 +27,3 @@ void UDialogueComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAc
 
 
 }
-
-FString UDialogueComponent::SendDialogue()
-{
-	EXString = "Hello";
-	return EXString;
-}
