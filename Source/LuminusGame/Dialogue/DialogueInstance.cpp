@@ -20,7 +20,7 @@ UDialogueInstance::UDialogueInstance()
         UE_LOG(LogTemp, Error, TEXT("Failed to load data table: %s"), *DialogueDataPath);
     }
 
-    // ParsingDataTable();
+    ParsingDataTable();
 }
 
 void UDialogueInstance::ParsingDataTable()
@@ -29,13 +29,29 @@ void UDialogueInstance::ParsingDataTable()
         UE_LOG(LogTemp, Error, TEXT("NULL DialogueTable"));
         return;
     }
-    //FDataTableRowHandle RowHandle;
-    //RowHandle.RowName = FName("MyRowName");
-    //if (const FDialogueData* MyRow = DialogueTable->FindRow<FDialogueData>(RowHandle.RowName, FString("")))
-    //{
-    //    // Row에 접근할 수 있습니다.
-    //    FName RowName = MyRow->Name;
-    //    FText RowValue = MyRow->Context;
-    //}
 
+    // 데이터 테이블의 모든 행을 반복하여 파싱
+    const TArray<FName>& RowNames = DialogueTable->GetRowNames();
+    for (const FName& RowName : RowNames)
+    {
+        // 데이터 테이블에서 특정 이름의 행을 가져오기
+        FDialogueData* DialogueData = DialogueTable->FindRow<FDialogueData>(RowName, FString());
+        if (DialogueData != nullptr)
+        {
+            // 가져온 데이터를 Map에 저장
+            DialogueDataMap.Add(DialogueData->ID, *DialogueData);
+        }
+    }
+
+    // 파싱된 데이터를 사용할 수 있습니다.
+    // 예를 들어, ID가 1인 데이터에 접근하려면 다음과 같이 합니다.
+    if (const FDialogueData* Data = DialogueDataMap.Find(1)) 
+    {
+        // 청일 안녕하세요.
+        UE_LOG(LogTemp, Warning, TEXT("Name: %s, Context: %s"), *Data->Name.ToString(), *Data->Context.ToString());
+    }
+    else
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Can't Find Data"));
+    }
 }
