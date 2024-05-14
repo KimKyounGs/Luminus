@@ -2,7 +2,7 @@
 	{
 		"file": "C:\\Users\\qkrgu\\Git\\Luminus\\Source\\LuminusGame\\Character\\MainCharacter.cpp",
 		"arguments": [
-			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
 			"@C:\\Users\\qkrgu\\Git\\Luminus\\.vscode\\compileCommands_LuminusGame\\LuminusGame.1.rsp"
 		],
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.4\\Engine\\Source"
@@ -10,23 +10,55 @@
 	{
 		"file": "C:\\Users\\qkrgu\\Git\\Luminus\\Source\\LuminusGame\\Character\\MainCharacter.h",
 		"arguments": [
-			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
 			"@C:\\Users\\qkrgu\\Git\\Luminus\\.vscode\\compileCommands_LuminusGame\\LuminusGame.1.rsp"
 		],
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.4\\Engine\\Source"
 	},
 	{
-		"file": "C:\\Users\\qkrgu\\Git\\Luminus\\Source\\LuminusGame\\Dialogue\\DialogueManager.cpp",
+		"file": "C:\\Users\\qkrgu\\Git\\Luminus\\Source\\LuminusGame\\Dialogue\\DialogueComponent.cpp",
 		"arguments": [
-			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
 			"@C:\\Users\\qkrgu\\Git\\Luminus\\.vscode\\compileCommands_LuminusGame\\LuminusGame.1.rsp"
 		],
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.4\\Engine\\Source"
 	},
 	{
-		"file": "C:\\Users\\qkrgu\\Git\\Luminus\\Source\\LuminusGame\\Dialogue\\DialogueManager.h",
+		"file": "C:\\Users\\qkrgu\\Git\\Luminus\\Source\\LuminusGame\\Dialogue\\DialogueComponent.h",
 		"arguments": [
-			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\qkrgu\\Git\\Luminus\\.vscode\\compileCommands_LuminusGame\\LuminusGame.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.4\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\qkrgu\\Git\\Luminus\\Source\\LuminusGame\\Dialogue\\DialogueInstance.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\qkrgu\\Git\\Luminus\\.vscode\\compileCommands_LuminusGame\\LuminusGame.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.4\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\qkrgu\\Git\\Luminus\\Source\\LuminusGame\\Dialogue\\DialogueInstance.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\qkrgu\\Git\\Luminus\\.vscode\\compileCommands_LuminusGame\\LuminusGame.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.4\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\qkrgu\\Git\\Luminus\\Source\\LuminusGame\\GlobalStruct.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\qkrgu\\Git\\Luminus\\.vscode\\compileCommands_LuminusGame\\LuminusGame.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.4\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\qkrgu\\Git\\Luminus\\Source\\LuminusGame\\GlobalStruct.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
 			"@C:\\Users\\qkrgu\\Git\\Luminus\\.vscode\\compileCommands_LuminusGame\\LuminusGame.1.rsp"
 		],
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.4\\Engine\\Source"
@@ -34,7 +66,7 @@
 	{
 		"file": "C:\\Users\\qkrgu\\Git\\Luminus\\Source\\LuminusGame\\LuminusGame.Build.cs",
 		"arguments": [
-			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
 			"@C:\\Users\\qkrgu\\Git\\Luminus\\.vscode\\compileCommands_LuminusGame\\LuminusGame.1.rsp"
 		],
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.4\\Engine\\Source"
@@ -42,7 +74,7 @@
 	{
 		"file": "C:\\Users\\qkrgu\\Git\\Luminus\\Source\\LuminusGame\\LuminusGame.cpp",
 		"arguments": [
-			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
 			"@C:\\Users\\qkrgu\\Git\\Luminus\\.vscode\\compileCommands_LuminusGame\\LuminusGame.1.rsp"
 		],
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.4\\Engine\\Source"
@@ -50,7 +82,7 @@
 	{
 		"file": "C:\\Users\\qkrgu\\Git\\Luminus\\Source\\LuminusGame\\LuminusGame.h",
 		"arguments": [
-			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
 			"@C:\\Users\\qkrgu\\Git\\Luminus\\.vscode\\compileCommands_LuminusGame\\LuminusGame.1.rsp"
 		],
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.4\\Engine\\Source"
@@ -58,7 +90,7 @@
 	{
 		"file": "C:\\Users\\qkrgu\\Git\\Luminus\\Source\\LuminusGame\\LuminusGameCharacter.cpp",
 		"arguments": [
-			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
 			"@C:\\Users\\qkrgu\\Git\\Luminus\\.vscode\\compileCommands_LuminusGame\\LuminusGame.1.rsp"
 		],
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.4\\Engine\\Source"
@@ -66,7 +98,7 @@
 	{
 		"file": "C:\\Users\\qkrgu\\Git\\Luminus\\Source\\LuminusGame\\LuminusGameCharacter.h",
 		"arguments": [
-			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
 			"@C:\\Users\\qkrgu\\Git\\Luminus\\.vscode\\compileCommands_LuminusGame\\LuminusGame.1.rsp"
 		],
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.4\\Engine\\Source"
@@ -74,7 +106,7 @@
 	{
 		"file": "C:\\Users\\qkrgu\\Git\\Luminus\\Source\\LuminusGame\\LuminusGameGameMode.cpp",
 		"arguments": [
-			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
 			"@C:\\Users\\qkrgu\\Git\\Luminus\\.vscode\\compileCommands_LuminusGame\\LuminusGame.1.rsp"
 		],
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.4\\Engine\\Source"
@@ -82,7 +114,7 @@
 	{
 		"file": "C:\\Users\\qkrgu\\Git\\Luminus\\Source\\LuminusGame\\LuminusGameGameMode.h",
 		"arguments": [
-			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
 			"@C:\\Users\\qkrgu\\Git\\Luminus\\.vscode\\compileCommands_LuminusGame\\LuminusGame.1.rsp"
 		],
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.4\\Engine\\Source"
