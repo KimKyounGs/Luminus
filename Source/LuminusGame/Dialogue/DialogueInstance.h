@@ -27,12 +27,12 @@ UCLASS()
 class LUMINUSGAME_API UDialogueInstance : public UGameInstance
 {
 	GENERATED_BODY()
-	
 private:
 	UPROPERTY()
 	UDataTable* DialogueTable; // 다이얼로그 테이블
-	TMap<int, FDialogueData> DialogueDataMap; // Map에 다이얼로그 데이터 저장. 
+	TMap<int32, TArray<FDialogueData>> DialogueDataMap; // Map에 다이얼로그 데이터 저장. 
 public:
 	UDialogueInstance(); // 생성자
 	void ParsingDataTable(); // 데이터 파싱
+	const TArray<FDialogueData>& SendDialogueData(const int32 ID); // 해당 ID를 Map의 키로 사용해서 대화 데이터 보내기.
 };
