@@ -72,5 +72,9 @@ public:
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
+	UFUNCTION(BluePrintImplementableEvent) //블루프린트 이벤트 선언
+	void InputVar();
+
+
 };
 
