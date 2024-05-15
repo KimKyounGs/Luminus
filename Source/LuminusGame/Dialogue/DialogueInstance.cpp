@@ -38,20 +38,44 @@ void UDialogueInstance::ParsingDataTable()
         FDialogueData* DialogueData = DialogueTable->FindRow<FDialogueData>(RowName, FString());
         if (DialogueData != nullptr)
         {
-            // 가져온 데이터를 Map에 저장
-            DialogueDataMap.Add(DialogueData->ID, *DialogueData);
+            // 가져온 데이터를 배열에 추가
+            TArray<FDialogueData>& DialogueArray = DialogueDataMap.FindOrAdd(DialogueData->ID);
+            DialogueArray.Add(*DialogueData);
         }
     }
 
-    // 파싱된 데이터를 사용할 수 있습니다.
-    // 예를 들어, ID가 1인 데이터에 접근하려면 다음과 같이 합니다.
-    if (const FDialogueData* Data = DialogueDataMap.Find(1)) 
+    // EX) ID가 4인 데이터에 접근.
+    if (const TArray<FDialogueData>* DataArray = DialogueDataMap.Find(4))
     {
-        // 청일 안녕하세요.
-        UE_LOG(LogTemp, Warning, TEXT("Name: %s, Context: %s"), *Data->Name.ToString(), *Data->Context.ToString());
+        for (const FDialogueData& Data : *DataArray)
+        {
+            // 데이터 사용 예시
+            UE_LOG(LogTemp, Warning, TEXT("Name: %s, Context: %s"), *Data.Name.ToString(), *Data.Context.ToString());
+        }
     }
     else
     {
         UE_LOG(LogTemp, Warning, TEXT("Can't Find Data"));
+    }
+}
+
+const TArray<FDialogueData>& UDialogueInstance::SendDialogueData(const int32 ID)
+{
+    if (const TArray<FDialogueData>* DataArray = DialogueDataMap.Find(ID))
+    {
+        // **** 이제 여기서 대화 데이터를 보내면 됨. ****
+        for (const FDialogueData& Data : *DataArray)
+        {
+            // 디버깅.
+            UE_LOG(LogTemp, Warning, TEXT("Name: %s, Context: %s"), *Data.Name.ToString(), *Data.Context.ToString());
+        }
+        return *DataArray;
+    }
+    else
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Can't Find Data ID = %d"), ID);
+        // 빈 배열을 반환.
+        static const TArray<FDialogueData> EmptyArray;
+        return EmptyArray;
     }
 }
