@@ -45,6 +45,10 @@ class ALuminusGameCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* LookAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* ExpansionAction;
+
+	UInputAction* GetInputActionFromMappingContext(UInputMappingContext* MappingContext, FName ActionName);
 
 public:
 	ALuminusGameCharacter();
@@ -58,6 +62,7 @@ protected:
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
 			
+	void Expansion(const FInputActionValue& Value);
 
 protected:
 	// APawn interface
@@ -71,10 +76,5 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
-
-	UFUNCTION(BluePrintImplementableEvent) //블루프린트 이벤트 선언
-	void InputVar();
-
-
 };
 

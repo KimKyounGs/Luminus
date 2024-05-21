@@ -10,7 +10,10 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
+#include "InputMappingContext.h"
+#include "InputAction.h"
 #include "Dialogue/DialogueComponent.h"
+
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -69,7 +72,6 @@ void ALuminusGameCharacter::BeginPlay()
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		}
 	}
-
 	
 }
 
@@ -91,6 +93,8 @@ void ALuminusGameCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ALuminusGameCharacter::Look);
+
+		EnhancedInputComponent->BindAction(ExpansionAction, ETriggerEvent::Triggered, this, &ALuminusGameCharacter::Expansion);
 	}
 	else
 	{
@@ -132,4 +136,40 @@ void ALuminusGameCharacter::Look(const FInputActionValue& Value)
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
+}
+
+void ALuminusGameCharacter::Expansion(const FInputActionValue& Value)
+{
+	float Input = Value.Get<float>();
+
+	float ArmLength = CameraBoom->TargetArmLength;
+
+	if(Input == -1 && ArmLength <= 800)
+	{
+		ArmLength += 50;
+	}
+	else if(Input == 1 && ArmLength >= 100)
+	{
+		ArmLength -= 50;
+	}
+
+	CameraBoom->TargetArmLength = ArmLength;
+
+}
+
+const UInputAction* GetInputActionFromMappingContext(UInputMappingContext* MappingContext, FName ActionName)
+{
+    if (!MappingContext) return nullptr;
+
+    const TArray<FEnhancedActionKeyMapping>& Mappings = MappingContext->GetMappings();
+
+    for (const FEnhancedActionKeyMapping& Mapping : Mappings)
+    {
+        if (Mapping.Action && Mapping.Action->GetFName() == ActionName)
+        {
+            return Mapping.Action.Get();
+        }
+    }
+
+    return nullptr;
 }
