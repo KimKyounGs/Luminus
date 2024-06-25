@@ -13,7 +13,7 @@
 #include "InputMappingContext.h"
 #include "InputAction.h"
 #include "Dialogue/DialogueComponent.h"
-
+#include "Engine/DamageEvents.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -72,9 +72,25 @@ void ALuminusGameCharacter::BeginPlay()
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		}
 	}
+
+	CurrentHealth = MaxHealth;
 	
 }
 
+float ALuminusGameCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController *EventInstigator, AActor *DamageCauser)
+{
+	Super::TakeDamage(DamageAmount,DamageEvent,EventInstigator,DamageCauser);
+
+	CurrentHealth = CurrentHealth - DamageAmount;
+	
+	UE_LOG(LogTemp, Warning, TEXT("%f"),CurrentHealth);
+	if(CurrentHealth < 1)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("You Die"));
+	}	
+
+    return 0.0f;
+}
 
 //////////////////////////////////////////////////////////////////////////
 // Input
