@@ -2,12 +2,12 @@
 
 
 #include "LuminusGameInstance.h"
-#include "Engine/DataTable.h" // µ¥ÀÌÅÍ Å×ÀÌºí Çì´õ ÆÄÀÏ Æ÷ÇÔ
+#include "Engine/DataTable.h" // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 #include "Kismet/GameplayStatics.h"
 
 ULuminusGameInstance::ULuminusGameInstance()
 {
-    // ´ÙÀÌ¾ó·Î±× µ¥ÀÌÅÍ Å×ÀÌºí °¡Á®¿À±â.
+    // ï¿½ï¿½ï¿½Ì¾ï¿½Î±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
     FString DialogueDataPath = TEXT("DataTable'/Game/GameData/DialogueData/Test'");
     static ConstructorHelpers::FObjectFinder<UDataTable> MyDataTableObject(*DialogueDataPath);
     if (MyDataTableObject.Succeeded())
@@ -41,26 +41,26 @@ void ULuminusGameInstance::ParsingDataTable()
         return;
     }
 
-    // µ¥ÀÌÅÍ Å×ÀÌºíÀÇ ¸ðµç ÇàÀ» ¹Ýº¹ÇÏ¿© ÆÄ½Ì
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ýºï¿½ï¿½Ï¿ï¿½ ï¿½Ä½ï¿½
     const TArray<FName>& RowNames = DialogueTable->GetRowNames();
     for (const FName& RowName : RowNames)
     {
-        // µ¥ÀÌÅÍ Å×ÀÌºí¿¡¼­ Æ¯Á¤ ÀÌ¸§ÀÇ ÇàÀ» °¡Á®¿À±â
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ï¿½ï¿½ Æ¯ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         FDialogueData* DialogueData = DialogueTable->FindRow<FDialogueData>(RowName, FString());
         if (DialogueData != nullptr)
         {
-            // °¡Á®¿Â µ¥ÀÌÅÍ¸¦ ¹è¿­¿¡ Ãß°¡
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½è¿­ï¿½ï¿½ ï¿½ß°ï¿½
             TArray<FDialogueData>& DialogueArray = DialogueDataMap.FindOrAdd(DialogueData->ID);
             DialogueArray.Add(*DialogueData);
         }
     }
 
-    // EX) ID°¡ 4ÀÎ µ¥ÀÌÅÍ¿¡ Á¢±Ù.
+    // EX) IDï¿½ï¿½ 4ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½ï¿½.
     if (const TArray<FDialogueData>* DataArray = DialogueDataMap.Find(4))
     {
         for (const FDialogueData& Data : *DataArray)
         {
-            // µ¥ÀÌÅÍ »ç¿ë ¿¹½Ã
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             UE_LOG(LogTemp, Warning, TEXT("Name: %s, Context: %s"), *Data.Name.ToString(), *Data.Context.ToString());
         }
     }
@@ -74,10 +74,10 @@ const TArray<FDialogueData>& ULuminusGameInstance::SendDialogueData(const int32 
 {
     if (const TArray<FDialogueData>* DataArray = DialogueDataMap.Find(ID))
     {
-        // **** ÀÌÁ¦ ¿©±â¼­ ´ëÈ­ µ¥ÀÌÅÍ¸¦ º¸³»¸é µÊ. ****
+        // **** ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½â¼­ ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½. ****
         for (const FDialogueData& Data : *DataArray)
         {
-            // µð¹ö±ë.
+            // ï¿½ï¿½ï¿½ï¿½ï¿½.
             UE_LOG(LogTemp, Warning, TEXT("Name: %s, Context: %s"), *Data.Name.ToString(), *Data.Context.ToString());
         }
         return *DataArray;
@@ -85,7 +85,7 @@ const TArray<FDialogueData>& ULuminusGameInstance::SendDialogueData(const int32 
     else
     {
         UE_LOG(LogTemp, Warning, TEXT("Can't Find Data ID = %d"), ID);
-        // ºó ¹è¿­À» ¹ÝÈ¯.
+        // ï¿½ï¿½ ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½È¯.
         static const TArray<FDialogueData> EmptyArray;
         return EmptyArray;
     }
