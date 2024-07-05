@@ -2,12 +2,11 @@
 
 
 #include "LuminusGameInstance.h"
-#include "Engine/DataTable.h" // ������ ���̺� ��� ���� ����
+#include "Engine/DataTable.h" 
 #include "Kismet/GameplayStatics.h"
 
 ULuminusGameInstance::ULuminusGameInstance()
 {
-    // ���̾�α� ������ ���̺� ��������.
     FString DialogueDataPath = TEXT("DataTable'/Game/GameData/DialogueData/Test'");
     static ConstructorHelpers::FObjectFinder<UDataTable> MyDataTableObject(*DialogueDataPath);
     if (MyDataTableObject.Succeeded())
@@ -41,26 +40,21 @@ void ULuminusGameInstance::ParsingDataTable()
         return;
     }
 
-    // ������ ���̺��� ��� ���� �ݺ��Ͽ� �Ľ�
     const TArray<FName>& RowNames = DialogueTable->GetRowNames();
     for (const FName& RowName : RowNames)
     {
-        // ������ ���̺����� Ư�� �̸��� ���� ��������
         FDialogueData* DialogueData = DialogueTable->FindRow<FDialogueData>(RowName, FString());
         if (DialogueData != nullptr)
         {
-            // ������ �����͸� �迭�� �߰�
             TArray<FDialogueData>& DialogueArray = DialogueDataMap.FindOrAdd(DialogueData->ID);
             DialogueArray.Add(*DialogueData);
         }
     }
 
-    // EX) ID�� 4�� �����Ϳ� ����.
     if (const TArray<FDialogueData>* DataArray = DialogueDataMap.Find(4))
     {
         for (const FDialogueData& Data : *DataArray)
         {
-            // ������ ��� ����
             UE_LOG(LogTemp, Warning, TEXT("Name: %s, Context: %s"), *Data.Name.ToString(), *Data.Context.ToString());
         }
     }
@@ -74,10 +68,8 @@ const TArray<FDialogueData>& ULuminusGameInstance::SendDialogueData(const int32 
 {
     if (const TArray<FDialogueData>* DataArray = DialogueDataMap.Find(ID))
     {
-        // **** ���� ���⼭ ��ȭ �����͸� ������ ��. ****
         for (const FDialogueData& Data : *DataArray)
         {
-            // �����.
             UE_LOG(LogTemp, Warning, TEXT("Name: %s, Context: %s"), *Data.Name.ToString(), *Data.Context.ToString());
         }
         return *DataArray;
@@ -85,7 +77,6 @@ const TArray<FDialogueData>& ULuminusGameInstance::SendDialogueData(const int32 
     else
     {
         UE_LOG(LogTemp, Warning, TEXT("Can't Find Data ID = %d"), ID);
-        // �� �迭�� ��ȯ.
         static const TArray<FDialogueData> EmptyArray;
         return EmptyArray;
     }
