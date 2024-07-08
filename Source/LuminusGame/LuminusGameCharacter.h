@@ -79,10 +79,10 @@ public:
 
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser);
 
-	//virtual void Jump();
+	virtual void Jump();
 
-	//UPROPERTY(BlueprintReadWrite)
-	//bool isRolling = false;
+	UPROPERTY(BlueprintReadWrite)
+	bool isRolling = false;
 
 	UPROPERTY(EditAnywhere)
 	float MaxHealth = 100;

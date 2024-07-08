@@ -100,7 +100,7 @@ void ALuminusGameCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent)) {
 		
 		// Jumping
-		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
+		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ALuminusGameCharacter::Jump);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
 		// Moving
@@ -116,17 +116,17 @@ void ALuminusGameCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 		UE_LOG(LogTemplateCharacter, Error, TEXT("'%s' Failed to find an Enhanced Input component! This template is built to use the Enhanced Input system. If you intend to use the legacy system, then you will need to update this C++ file."), *GetNameSafe(this));
 	}
 }
-//void ALuminusGameCharacter::Jump()
-/*{
-	Super::Jump();
-
+void ALuminusGameCharacter::Jump()
+{
 	if(isRolling)
 	{
 		return;
-	
 	}
+	
+	Super::Jump();
+
 }
-*/
+
 
 void ALuminusGameCharacter::Move(const FInputActionValue& Value)
 {
