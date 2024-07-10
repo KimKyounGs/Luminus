@@ -156,7 +156,7 @@ void ALuminusGameCharacter::Look(const FInputActionValue& Value)
 	// input is a Vector2D
 	FVector2D LookAxisVector = Value.Get<FVector2D>();
 
-	if (Controller != nullptr)
+	if (Controller != nullptr && !isLockOn)
 	{
 		// add yaw and pitch input to controller
 		AddControllerYawInput(LookAxisVector.X);
@@ -170,7 +170,7 @@ void ALuminusGameCharacter::Expansion(const FInputActionValue& Value)
 
 	float ArmLength = CameraBoom->TargetArmLength;
 
-	if(Input == -1 && ArmLength <= 800)
+	if(Input == -1 && ArmLength <= 500)
 	{
 		ArmLength += 50;
 	}
