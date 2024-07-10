@@ -84,6 +84,9 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	bool isRolling = false;
 
+	UPROPERTY(BlueprintReadWrite)
+	bool isLockOn = false;
+
 	UPROPERTY(EditAnywhere)
 	float MaxHealth = 100;
 
