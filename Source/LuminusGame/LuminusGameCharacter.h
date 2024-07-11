@@ -87,13 +87,10 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	bool isLockOn = false;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(BlueprintReadOnly,EditAnywhere)
 	float MaxHealth = 100;
 
-private:
+	UPROPERTY(BlueprintReadOnly,EditAnywhere)
 	float CurrentHealth;
-
-
-	
 };
 

@@ -78,9 +78,9 @@ void ALuminusGameCharacter::BeginPlay()
 
 float ALuminusGameCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController *EventInstigator, AActor *DamageCauser)
 {
-	Super::TakeDamage(DamageAmount,DamageEvent,EventInstigator,DamageCauser);
+	float DamageApplied = Super::TakeDamage(DamageAmount,DamageEvent,EventInstigator,DamageCauser);
 
-	CurrentHealth = CurrentHealth - DamageAmount;
+	CurrentHealth = CurrentHealth - DamageApplied;
 	
 	UE_LOG(LogTemp, Warning, TEXT("%f"),CurrentHealth);
 	if(CurrentHealth < 1)
@@ -88,7 +88,7 @@ float ALuminusGameCharacter::TakeDamage(float DamageAmount, FDamageEvent const& 
 		UE_LOG(LogTemp, Warning, TEXT("You Die"));
 	}	
 
-    return 0.0f;
+    return DamageApplied;
 }
 
 //////////////////////////////////////////////////////////////////////////
