@@ -92,5 +92,8 @@ public:
 
 	UPROPERTY(BlueprintReadOnly,EditAnywhere)
 	float CurrentHealth;
+
+private:
+	class AMainPlayerController* PlayerController;
 };
 

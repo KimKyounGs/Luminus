@@ -6,7 +6,7 @@
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
-#include "GameFramework/Controller.h"
+#include "MainPlayerController.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
@@ -53,18 +53,15 @@ ALuminusGameCharacter::ALuminusGameCharacter()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
 
-	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
-	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
-
 }
 
 void ALuminusGameCharacter::BeginPlay()
 {
 	// Call the base class  
 	Super::BeginPlay();
-
+	PlayerController = Cast<AMainPlayerController>(Controller);
 	//Add Input Mapping Context
-	if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
+	if (PlayerController != nullptr)
 	{
 		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
 		{
@@ -73,7 +70,7 @@ void ALuminusGameCharacter::BeginPlay()
 	}
 
 	CurrentHealth = MaxHealth;
-	
+
 }
 
 float ALuminusGameCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController *EventInstigator, AActor *DamageCauser)
@@ -102,13 +99,11 @@ void ALuminusGameCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 		// Jumping
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ALuminusGameCharacter::Jump);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
-
 		// Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ALuminusGameCharacter::Move);
-
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ALuminusGameCharacter::Look);
-
+		//확대
 		EnhancedInputComponent->BindAction(ExpansionAction, ETriggerEvent::Triggered, this, &ALuminusGameCharacter::Expansion);
 	}
 	else
