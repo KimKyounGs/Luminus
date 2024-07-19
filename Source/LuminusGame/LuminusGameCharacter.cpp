@@ -69,6 +69,8 @@ void ALuminusGameCharacter::BeginPlay()
 		}
 	}
 
+	GetMesh()->HideBoneByName(TEXT("weapon_r"), EPhysBodyOp::PBO_None); //이름과 동일한 본을 감춤(EphyBodyOp은 잘 쓰이지않음)
+
 	CurrentHealth = MaxHealth;
 
 }
