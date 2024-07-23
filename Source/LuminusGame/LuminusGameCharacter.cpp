@@ -69,24 +69,25 @@ void ALuminusGameCharacter::BeginPlay()
 		}
 	}
 
-	GetMesh()->HideBoneByName(TEXT("weapon_r"), EPhysBodyOp::PBO_None); //이름과 동일한 본을 감춤(EphyBodyOp은 잘 쓰이지않음)
+	GetMesh()->HideBoneByName(TEXT("weapon_r"), EPhysBodyOp::PBO_None);
 
 	CurrentHealth = MaxHealth;
+	UE_LOG(LogTemp, Warning, TEXT("시작 체력 : %f"),CurrentHealth);
 
 }
 
 float ALuminusGameCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController *EventInstigator, AActor *DamageCauser)
 {
 	float DamageApplied = Super::TakeDamage(DamageAmount,DamageEvent,EventInstigator,DamageCauser);
-
-	CurrentHealth = CurrentHealth - DamageApplied;
-	
-	UE_LOG(LogTemp, Warning, TEXT("%f"),CurrentHealth);
-	if(CurrentHealth < 1)
+	if(!isRolling)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("You Die"));
-	}	
-
+		CurrentHealth = CurrentHealth - DamageApplied;
+	
+		if(CurrentHealth < 1)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("You Die"));
+		}	
+	}
     return DamageApplied;
 }
 
