@@ -39,10 +39,22 @@ void AMainPlayerController::ViewMainMenu()
 {
     if(MainMenu != nullptr)
     {
-        //SetPause(true);
-        MainMenu->AddToViewport();
-        bShowMouseCursor = true;
-        SetInputMode(FInputModeUIOnly());
+        if(!IsViewMenu)
+        {
+            //SetPause(true);
+            MainMenu->AddToViewport();
+            bShowMouseCursor = true;
+            SetInputMode(FInputModeUIOnly());
+            IsViewMenu = true;
+        }
+        else
+        {
+            MainMenu->RemoveFromParent();
+            bShowMouseCursor = false;
+            SetInputMode(FInputModeGameOnly());
+            IsViewMenu = false;
+        }
+
     }
     else
     {
