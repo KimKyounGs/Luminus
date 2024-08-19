@@ -154,11 +154,26 @@ void ALuminusGameCharacter::Look(const FInputActionValue& Value)
 	// input is a Vector2D
 	FVector2D LookAxisVector = Value.Get<FVector2D>();
 
+	float ControllerYaw;
+	FRotator CameraRotation = GetController()->GetControlRotation();
+	ControllerYaw = CameraRotation.Vector().Z;
+
 	if (Controller != nullptr && !isLockOn)
 	{
-		// add yaw and pitch input to controller
-		AddControllerYawInput(LookAxisVector.X);
-		AddControllerPitchInput(LookAxisVector.Y);
+		if(ControllerYaw > 0.2f && LookAxisVector.Y < 0)
+		{
+			AddControllerYawInput(LookAxisVector.X); 	
+		}
+		else if(ControllerYaw < -0.9f && LookAxisVector.Y > 0)
+		{
+			AddControllerYawInput(LookAxisVector.X); 
+		}
+		else
+		{
+			// add yaw and pitch input to controller
+			AddControllerYawInput(LookAxisVector.X); 
+			AddControllerPitchInput(LookAxisVector.Y);
+		}
 	}
 }
 
