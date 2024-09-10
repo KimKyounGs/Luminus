@@ -44,9 +44,39 @@ void ABaseEnemy::OnMontageCompleted(UAnimMontage* Montage, bool bInterrupted)
     // 공격 애니메이션이 끝났는지 확인하고, 끝났다면 OnAttackEnd 델리게이트를 호출
     if (Montage == AttackMontage && !bInterrupted)
     {
-        UE_LOG(LogTemp, Warning, TEXT("Attack finished, calling OnAttackEnd"));
-
         // 공격이 끝났음을 알리는 델리게이트 호출
         OnAttackEnd.Broadcast();
+    }
+}
+
+// 검을 생성하고 부착하는 함수
+void ABaseEnemy::WieldSword()
+{
+    UE_LOG(LogTemp, Warning, TEXT("Yes WieldSword()"));
+    if (SwordClass) // 스폰할 검 클래스가 유효한지 확인
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Yes SworldClass"));
+        // 검 스폰
+        FActorSpawnParameters SpawnParams;
+        SpawnParams.Instigator = this;  // Instigator 설정
+
+        // 캐릭터 위치에서 검을 스폰
+        AActor* SpawnedSword = GetWorld()->SpawnActor<AActor>(SwordClass, GetActorTransform(), SpawnParams);
+
+        if (SpawnedSword)
+        {
+            UE_LOG(LogTemp, Warning, TEXT("Yes SpawnSword"));
+            USkeletalMeshComponent* MeshComp = GetMesh();
+
+            if (MeshComp)
+            {
+                UE_LOG(LogTemp, Warning, TEXT("Yes MeshComp"));
+                // 소켓에 검 부착
+                FAttachmentTransformRules AttachRules(EAttachmentRule::SnapToTarget, true);
+                SpawnedSword->AttachToComponent(MeshComp, AttachRules, SocketName);
+
+                bIsWieldingSword = true;
+            }
+        }
     }
 }

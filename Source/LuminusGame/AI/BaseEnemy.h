@@ -21,13 +21,16 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animation")
     UAnimMontage* AttackMontage;
 
-    // 공격 함수 (애니메이션을 재생)
-    UFUNCTION(BlueprintCallable, Category = "Attack")
-    void Attack();
-
     // 공격이 끝났을 때 호출될 델리게이트
     UPROPERTY(BlueprintAssignable, Category = "Attack")
     FOnAttackEndDelegate OnAttackEnd;
+
+    // 헤더 파일 (MyCharacter.h 또는 필요한 클래스 헤더에 추가)
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon")
+    TSubclassOf<AActor> SwordClass;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weapon")
+    bool bIsWieldingSword;
 
 protected:
     // Called when the game starts or when spawned
@@ -35,4 +38,16 @@ protected:
 
     // 애니메이션이 끝났을 때 호출될 함수
     void OnMontageCompleted(UAnimMontage* Montage, bool bInterrupted);
+
+public :
+    // 공격 함수 (애니메이션을 재생)
+    UFUNCTION(BlueprintCallable, Category = "Attack")
+    void Attack();
+
+    UFUNCTION(BlueprintCallable, Category = "Weapon")
+    void WieldSword();
+
+private:
+    // 소켓 이름 정의
+    FName SocketName = TEXT("Enemy1Weapon_r");
 };
