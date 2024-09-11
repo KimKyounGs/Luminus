@@ -19,7 +19,6 @@ public:
     // ExecuteTask 함수는 태스크가 실행될 때 호출됩니다.
     virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 
-    // 공격이 끝난 후 호출될 함수
     UFUNCTION()
     void FinishedAttacking();
 

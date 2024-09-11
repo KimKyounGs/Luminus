@@ -2,6 +2,7 @@
 #include "GameFramework/Actor.h"
 #include "Kismet/GameplayStatics.h"
 #include "TimerManager.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 // Sets default values
 ABaseEnemy::ABaseEnemy()
@@ -14,6 +15,39 @@ ABaseEnemy::ABaseEnemy()
 void ABaseEnemy::BeginPlay()
 {
     Super::BeginPlay();
+}
+
+TArray<AActor*> ABaseEnemy::GetPatrolRoute() const
+{
+    return PatrolRoute;
+}
+
+float ABaseEnemy::SetMovementSpeed(EMovementStatus Speed)
+{
+    float SpeedValue = 0.0f;
+
+    // 열거형 상태에 따른 속도 값 설정
+    switch (Speed)
+    {
+    case EMovementStatus::Idle:
+        SpeedValue = 0.0f;
+        break;
+    case EMovementStatus::Walking:
+        SpeedValue = 100.0f; // 사진에서 보이는 Walking 속도
+        break;
+    case EMovementStatus::Jogging:
+        SpeedValue = 300.0f; // 사진에서 보이는 Jogging 속도
+        break;
+    case EMovementStatus::Sprinting:
+        SpeedValue = 500.0f; // 사진에서 보이는 Sprinting 속도
+        break;
+    default:
+        break;
+    }
+
+    // 캐릭터의 Max Walk Speed를 설정
+    GetCharacterMovement()->MaxWalkSpeed = SpeedValue;
+    return SpeedValue;
 }
 
 void ABaseEnemy::Attack()
@@ -52,10 +86,8 @@ void ABaseEnemy::OnMontageCompleted(UAnimMontage* Montage, bool bInterrupted)
 // 검을 생성하고 부착하는 함수
 void ABaseEnemy::WieldSword()
 {
-    UE_LOG(LogTemp, Warning, TEXT("Yes WieldSword()"));
     if (SwordClass) // 스폰할 검 클래스가 유효한지 확인
     {
-        UE_LOG(LogTemp, Warning, TEXT("Yes SworldClass"));
         // 검 스폰
         FActorSpawnParameters SpawnParams;
         SpawnParams.Instigator = this;  // Instigator 설정
@@ -65,12 +97,10 @@ void ABaseEnemy::WieldSword()
 
         if (SpawnedSword)
         {
-            UE_LOG(LogTemp, Warning, TEXT("Yes SpawnSword"));
             USkeletalMeshComponent* MeshComp = GetMesh();
 
             if (MeshComp)
             {
-                UE_LOG(LogTemp, Warning, TEXT("Yes MeshComp"));
                 // 소켓에 검 부착
                 FAttachmentTransformRules AttachRules(EAttachmentRule::SnapToTarget, true);
                 SpawnedSword->AttachToComponent(MeshComp, AttachRules, SocketName);

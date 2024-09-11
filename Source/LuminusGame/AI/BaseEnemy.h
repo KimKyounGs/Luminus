@@ -4,13 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "LuminusGame/AI/EnemyInterface.h"
 #include "BaseEnemy.generated.h"
 
 // 델리게이트 선언
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnAttackEndDelegate);
 
 UCLASS()
-class LUMINUSGAME_API ABaseEnemy : public ACharacter
+class LUMINUSGAME_API ABaseEnemy : public ACharacter, public IEnemyInterface
 {
     GENERATED_BODY()
 
@@ -32,6 +33,10 @@ public:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weapon")
     bool bIsWieldingSword;
 
+    // 순찰 경로를 저장하는 변수
+    UPROPERTY(EditAnywhere, Category = "AI")
+    TArray<AActor*> PatrolRoute;
+
 protected:
     // Called when the game starts or when spawned
     virtual void BeginPlay() override;
@@ -40,12 +45,18 @@ protected:
     void OnMontageCompleted(UAnimMontage* Montage, bool bInterrupted);
 
 public :
+    virtual TArray<AActor*> GetPatrolRoute() const override;
+
+    virtual float SetMovementSpeed(EMovementStatus Speed) override;
+
     // 공격 함수 (애니메이션을 재생)
     UFUNCTION(BlueprintCallable, Category = "Attack")
     void Attack();
 
     UFUNCTION(BlueprintCallable, Category = "Weapon")
     void WieldSword();
+
+
 
 private:
     // 소켓 이름 정의
