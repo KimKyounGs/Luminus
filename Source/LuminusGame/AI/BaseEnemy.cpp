@@ -17,7 +17,7 @@ void ABaseEnemy::BeginPlay()
     Super::BeginPlay();
 }
 
-TArray<AActor*> ABaseEnemy::GetPatrolRoute() const
+TArray<FVector> ABaseEnemy::GetPatrolRoute() const
 {
     return PatrolRoute;
 }

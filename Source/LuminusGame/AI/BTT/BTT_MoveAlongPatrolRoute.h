@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "BehaviorTree/BTTaskNode.h"
+#include "Components/SplineComponent.h"  // 스플라인 컴포넌트 관련 헤더 추가
 #include "BTT_MoveAlongPatrolRoute.generated.h"
 /**
  * 
@@ -20,9 +21,7 @@ protected:
     virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 
 private:
-    // GetPatrolRoute 인터페이스 함수 호출
-    bool GetPatrolRoute(AActor* ControlledPawn, TArray<AActor*>& OutPatrolPoints) const;
 
     // IncrementPatrolRoute 호출
-    void IncrementPatrolRoute(AActor* ControlledPawn);
+    void IncrementPatrolRoute(USplineComponent* PatrolRouteSpline);
 };

@@ -31,7 +31,7 @@ class LUMINUSGAME_API IEnemyInterface
 
 public:
 	// 순찰 경로를 반환하는 함수 선언
-	virtual TArray<AActor*> GetPatrolRoute() const = 0;
+	virtual TArray<FVector> GetPatrolRoute() const = 0;
 
 	// 인터페이스 함수 선언
 	virtual float SetMovementSpeed(EMovementStatus Speed) = 0;

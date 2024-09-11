@@ -35,7 +35,7 @@ public:
 
     // 순찰 경로를 저장하는 변수
     UPROPERTY(EditAnywhere, Category = "AI")
-    TArray<AActor*> PatrolRoute;
+    TArray<FVector> PatrolRoute;
 
 protected:
     // Called when the game starts or when spawned
@@ -45,7 +45,7 @@ protected:
     void OnMontageCompleted(UAnimMontage* Montage, bool bInterrupted);
 
 public :
-    virtual TArray<AActor*> GetPatrolRoute() const override;
+    virtual TArray<FVector> GetPatrolRoute() const override;
 
     virtual float SetMovementSpeed(EMovementStatus Speed) override;
 
