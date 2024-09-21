@@ -116,7 +116,7 @@ void ALuminusGameCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 }
 void ALuminusGameCharacter::Jump()
 {
-	if(isRolling)
+	if(isRolling || isAttacking)
 	{
 		return;
 	}

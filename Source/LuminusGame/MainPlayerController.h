@@ -29,15 +29,16 @@ public:
 
 	void ViewMainMenu();
 
+	UPROPERTY(BlueprintReadOnly)
+	UUserWidget* HUD;
+
+	UPROPERTY(BlueprintReadOnly)
+	UUserWidget* MainMenu;
+
 protected:
 	virtual void BeginPlay();
 
 private:
-	UPROPERTY()
-	UUserWidget* HUD;
-
-	UPROPERTY()
-	UUserWidget* MainMenu;
 	
 	bool IsViewMenu = false;
 };

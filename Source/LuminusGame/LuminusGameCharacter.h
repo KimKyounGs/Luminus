@@ -82,6 +82,9 @@ public:
 	virtual void Jump();
 
 	UPROPERTY(BlueprintReadWrite)
+	bool isAttacking = false;
+
+	UPROPERTY(BlueprintReadWrite)
 	bool isRolling = false;
 
 	UPROPERTY(BlueprintReadWrite)
